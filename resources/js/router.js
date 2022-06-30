@@ -18,15 +18,18 @@ import Posts from './Pages/Posts';
 // We'll talk about nested routes later.
 const routes = [
     {
-        path: '/', 
+        path: '/',
+        name:'home', 
         component: Home 
     },
     {
         path: '/about', 
+        name:'about',
         component: About 
     },
     {
         path: '/posts', 
+        name:'posts', 
         component: Posts
     }
     
@@ -37,14 +40,13 @@ const routes = [
 // You can pass in additional options here, but let's
 // keep it simple for now.
 const router = new VueRouter({
+  mode:'history',
   routes // short for `routes: routes`
 })
 
 // 4. Create and mount the root instance.
 // Make sure to inject the router with the router option to make the
 // whole app router-aware.
-const app = new Vue({
-  router
-}).$mount('#app')
+export default router;
 
 // Now the app has started!
