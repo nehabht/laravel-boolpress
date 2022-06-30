@@ -16,7 +16,7 @@
                                         <div class="card-body">
                                             <h4>{{ post.title }}</h4>
                                             <p>{{  trimText(post.content) }}</p>
-                                            <a href="">Read more</a>
+                                            <router-link class="btn btn-primary btn-sm" :to="{name: 'post', params: {slug: post.slug}}">Read More</router-link>
                                         </div>
                                         <div class="card-footer">
                                             <div class="categories">
