@@ -19,6 +19,13 @@ class PostController extends Controller
     {
         $post = Post::with(['tags','category'])->where('slug', $slug)->first();
 
-        return $post;
+        if ($post) {
+            return $post;
+        } else {
+            return response()->json([
+                'status_code' => 404,
+                'status_text' => 'not found',
+            ]);
+        }
     }
 }

@@ -5404,8 +5404,18 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/posts/" + this.$route.params.slug).then(function (response) {
         console.log(response);
-        _this.post = response.data;
-        _this.loading = false;
+
+        if (response.data.status_code === 404) {
+          console.log('404 page not found');
+
+          _this.$router.push({
+            name: 'not-found'
+          });
+        } else {
+          console.log('page found');
+          _this.post = response.data;
+          _this.loading = false;
+        }
       })["catch"](function (e) {
         console.error(e);
       });

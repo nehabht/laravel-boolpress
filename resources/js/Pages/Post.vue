@@ -41,8 +41,16 @@ export default {
         .get("/api/posts/" + this.$route.params.slug)
         .then((response) => {
           console.log(response);
-          this.post = response.data;
-          this.loading = false;
+
+          if (response.data.status_code === 404) {
+            console.log('404 page not found');
+            this.$router.push({ name: 'not-found'});
+            
+          } else {
+            console.log('page found')
+            this.post = response.data;
+            this.loading = false;
+          }
         })
         .catch((e) => {
           console.error(e);
